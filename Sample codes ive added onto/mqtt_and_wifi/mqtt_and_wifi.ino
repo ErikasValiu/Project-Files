@@ -6,7 +6,6 @@
 
 // Use hardware serial for ESP32-S3 DevKit
 #define GPS_SERIAL Serial2
-#define SHOCK_SENSOR_PIN 12 // Example pin for the shock sensor
 
 WiFiMulti wiFiMulti; // Create an instance of WiFiMulti for handling multiple WiFi networks
 WiFiClient wiFiClient; // Create a WiFi client instance for communication
@@ -17,7 +16,8 @@ const uint32_t connectTimeoutMs = 10000; // Timeout for WiFi connection
 // MQTT broker details
 const char broker[] = "b00141111.westeurope.cloudapp.azure.com"; // MQTT broker address
 int port = 1883; // MQTT port
-const char topic[] = "GPS"; // Topic to publish GPS data
+const char topicLatitude[] = "GPS/latitude"; // Topic to publish latitude
+const char topicLongitude[] = "GPS/longitude"; // Topic to publish longitude
 const long interval = 8000; // Interval for reconnecting to WiFi
 unsigned long previousMillis = 0;
 
@@ -27,7 +27,6 @@ char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as k
 void setup() {
   Serial.begin(115200); // Start serial communication for debugging
   GPS_SERIAL.begin(9600, SERIAL_8N1, 18, 17); // Start serial communication for GPS module
-  pinMode(SHOCK_SENSOR_PIN, INPUT); // Initialize shock sensor pin
 
   delay(10);
   WiFi.mode(WIFI_STA); // Set WiFi mode to Station mode
@@ -76,19 +75,11 @@ void loop() {
   // Reconnect to MQTT if necessary
   reconnect();
 
-  // Read GPS data
-  String gpsData;
+  // Read GPS data and publish
   if (GPS_SERIAL.available()) { // Check if GPS data is available
-    gpsData = GPS_SERIAL.readStringUntil('\n'); // Read GPS data until newline character
-  }
-
-  // Read shock sensor data
-  int shockValue = digitalRead(SHOCK_SENSOR_PIN); // Example read function, adjust as needed
-
-  // Publish GPS and shock sensor data to MQTT
-  if (!gpsData.isEmpty()) {
+    String gpsData = GPS_SERIAL.readStringUntil('\n'); // Read GPS data until newline character
     if (gpsData.startsWith("$GPGGA")) { // Check if GPS data is in GPGGA format
-      // Parsing GPS data (similar to original code)
+      // Parsing GPS data
       char* tokens[15];
       int i = 0;
       char* token = strtok((char*)gpsData.c_str(), ","); // Tokenize GPS data
@@ -99,16 +90,22 @@ void loop() {
 
       // Ensure latitude, longitude, and altitude fields are available
       if (i >= 15 && tokens[2][0] != '\0' && tokens[4][0] != '\0' && tokens[9][0] != '\0') {
-        // Extracting latitude, longitude, altitude (similar to original code)
+        // Extracting latitude, longitude, altitude
         float latitude = atof(tokens[2]) / 100; // Convert latitude to float
         float longitude = atof(tokens[4]) / -100; // Convert longitude to float
         float altitude = atof(tokens[9]); // Convert altitude to float
 
-        // Create JSON payload containing GPS and shock sensor data
-        String payload = "{\"latitude\": " + String(latitude, 6) + ", \"longitude\": " + String(longitude, 6) + ", \"altitude\": " + String(altitude) + ", \"shock\": " + String(shockValue) + "}";
+        // Publish latitude and longitude separately to MQTT
+        mqttClient.publish(topicLatitude, String(latitude, 6).c_str());
+        mqttClient.publish(topicLongitude, String(longitude, 6).c_str());
 
-        // Publish payload to MQTT
-        mqttClient.publish(topic, payload.c_str());
+        // Print parsed GPS data
+        Serial.print("Latitude: ");
+        Serial.println(latitude, 6);
+        Serial.print("Longitude: ");
+        Serial.println(longitude, 6);
+        Serial.print("Altitude: ");
+        Serial.println(altitude);
       }
     }
   }
