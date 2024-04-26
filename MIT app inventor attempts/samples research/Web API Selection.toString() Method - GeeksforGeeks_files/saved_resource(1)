@@ -1,0 +1,43 @@
+
+var ftGUID_7938982="595968654D7C8C";
+var ftConfID_7938982="0";
+var ftParams_7938982="ftx=&fty=&ftadz=&ftscw=&ft_custom=&ftOBA=1&ft_agentEnv=0&ft_referrer=https%3A%2F%2Faa.geeksforgeeks.org%2Fiframe.html&gdpr=1&gdpr_consent=CP9oCIAP9oCIAEsACBENAxEoAP_gAEPgABBoJ9JB7H7HbWFqwX73aLtUMAlHx8CKYoQgAASJAmQBQCrWqIwTx2AwFASyhqIKkQIAoiZBIQIECJDUDUAASAAEoSCEAkCQgAEKJ4BgiFMBAiFICF5iEQpD2AAI4PpodydQ2A8M-cK0nETwz4EBh3Yw90WUWBCcA48oDYi9YRCTytIPNepsp4L0dF_rEWzeT0k_pSrppB8qUt873XUO1_fff78E-0A9jditri3ZDwrkFmqEASoo-BBMUAQAAJAgSIAIBVLVEYB7rAYACBRAFEECIAAURIAkAAEAAwiAiAApAACEIBSACAAQACEEEAwAAmAgBAgACQBAIUg5AAEcHU0OhOoZIamcEFaTiJYJMCQ05kQKeBiKAhMBcGABIQVoAAI4GkGGqEkY0ECOGf0iIBJAwCfwBUy0ysFaS7F7t0hqn8d-kJAA.f4AAAHwAAAA&us_privacy=${US_PRIVACY}&bundle_id=&site_url=https://aa.geeksforgeeks.org/iframe.html&ft_partnerimpid=ABAjH0i3or-VDDF0Ax0bTmVWdsi5&pub_id=1&sup_platform=1&cachebuster=759804.2605769925";
+var ftKeyword_7938982="";
+var ftCustom_7938982="";
+var ftSection_7938982="";
+var ftSegment_7938982="";
+var ftSegmentList_7938982=[];
+var ftRuleMatch_7938982="0";
+var ftTimestamp_7938982="1714078128";
+var ftGeoC2_7938982="ie";
+var ftGeoState_7938982="co";
+var ftGeoCity_7938982="mallow";
+var ftISP_7938982="virgin media ireland limited";
+var ftSpeed_7938982="broadband";
+var ftConnType_7938982="wifi";
+var ftDMA_7938982="-1";
+var ftLong_7938982="-8.64";
+var ftLat_7938982="52.14";
+var ftPostal_7938982="p51";
+var ftTimeZone_7938982="+100";
+var ftMobileCarrier_7938982="";
+var ftImp7938982 = {};
+ftImp7938982.privacy = "y";
+ftImp7938982.guidAge = "0";
+ftImp7938982.impID = "20050435-B355-EE1A-566E-2947DD9E257F";
+ftImp7938982.duid = "FT:595968654D7C8C";
+
+ftImp7938982.ft_tpplid = "";
+ftImp7938982.ft_c = {};
+ftImp7938982.gdpr = "1";
+ftImp7938982.gdpr_consent = "CP9oCIAP9oCIAEsACBENAxEoAP_gAEPgABBoJ9JB7H7HbWFqwX73aLtUMAlHx8CKYoQgAASJAmQBQCrWqIwTx2AwFASyhqIKkQIAoiZBIQIECJDUDUAASAAEoSCEAkCQgAEKJ4BgiFMBAiFICF5iEQpD2AAI4PpodydQ2A8M-cK0nETwz4EBh3Yw90WUWBCcA48oDYi9YRCTytIPNepsp4L0dF_rEWzeT0k_pSrppB8qUt873XUO1_fff78E-0A9jditri3ZDwrkFmqEASoo-BBMUAQAAJAgSIAIBVLVEYB7rAYACBRAFEECIAAURIAkAAEAAwiAiAApAACEIBSACAAQACEEEAwAAmAgBAgACQBAIUg5AAEcHU0OhOoZIamcEFaTiJYJMCQ05kQKeBiKAhMBcGABIQVoAAI4GkGGqEkY0ECOGf0iIBJAwCfwBUy0ysFaS7F7t0hqn8d-kJAA.f4AAAHwAAAA";
+ftImp7938982.gdpr_pd = "";
+ftImp7938982.oob_consent = "";
+ftImp7938982.gdprStoredConsent = "";
+ftImp7938982.us_privacy = "!!US_PRIVACY!";
+ftImp7938982.gpc = "";
+
+var ftCreativeId_7938982 = "4632046";
+document.write('<scr'+'ipt src="https://ajs-assets.ftstatic.com/ftUtils.js" id="ftscript_m7938982" name="ftscript_m7938982"></scr'+'ipt>');window.fTChecker=window.fTChecker||function(id){if(!id)return false;id=""+id;if(window.hasOwnProperty("ftUtils")){window["ft"+id]=Object.assign({},window.ftUtils.common);window["ft"+id].getBannerConfig(id)}else(function(id){window.setTimeout(function(){window.fTChecker(id)},50)})(id)};window.fTChecker("7938982");
+
+

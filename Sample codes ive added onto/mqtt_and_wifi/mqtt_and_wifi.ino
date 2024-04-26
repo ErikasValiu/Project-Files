@@ -110,7 +110,7 @@ void loop() {
     }
   }
 
-  delay(1000); // Delay for stability
+  delay(3000); // Delay for stability
 }
 
 void reconnect() {
