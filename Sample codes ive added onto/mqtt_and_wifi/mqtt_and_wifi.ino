@@ -1,3 +1,8 @@
+////////
+// Erikas Valiukevicius
+// 20/3/24
+// full gps and mqtt setup 
+////////
 #include <Arduino.h>
 #include <WiFi.h>
 #include <WiFiMulti.h>
