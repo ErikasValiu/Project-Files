@@ -144,6 +144,7 @@ void loop() {
         Serial.println(longitude, 6);
         Serial.print("Altitude: ");
         Serial.println(altitude);
+         delay(10); // Delay for stability
       }
     }
   }
