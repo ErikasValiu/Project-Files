@@ -1,3 +1,9 @@
+
+////////
+// Erikas Valiukevicius
+// 20/3/24
+// final code 
+////////
 #include <Arduino.h>
 #include <WiFi.h>
 #include <WiFiMulti.h>
@@ -144,7 +150,6 @@ void loop() {
         Serial.println(longitude, 6);
         Serial.print("Altitude: ");
         Serial.println(altitude);
-         delay(10); // Delay for stability
       }
     }
   }
@@ -153,14 +158,14 @@ void loop() {
   int piezoADC = analogRead(PIEZO_PIN);
   float piezoV = map(piezoADC, 0, 4096, 0, 100.0);
   mqttClient.publish(topicShock, String(piezoV, 2).c_str());
-  Serial.print("The Shock pulse is: "); // Print the shock voltage.
+  Serial.print("The Shock pulse is: ") // Print the shock voltage.
   Serial.println(piezoV);
 
   // Reading temperature or humidity takes about 250 milliseconds!
   float temperature = dht.readTemperature();
   float humidity = dht.readHumidity();
-  mqttClient.publish(topicTemp, String(temperature, 2).c_str());
-  mqttClient.publish(topicHumid, String(humidity, 1).c_str());
+  mqttClient.publish(topicTemp, (String(temperature, 2) + " C").c_str());
+  mqttClient.publish(topicHumid, (String(humidity, 1) + " %").c_str());
   // Check if any reads failed and exit early (to try again).
   if (isnan(temperature) || isnan(humidity))
     Serial.println("Failed to read data from DHT sensor!");
@@ -182,7 +187,7 @@ void loop() {
   float dt = 0.15; // Example time interval in seconds
   x_velocity += x_acceleration * dt;
   y_velocity += y_acceleration * dt;
-  const float threshold = 4.9;
+  const float threshold = 1.3; //5km/h = 1.3m/s
   // Check device orientation using switch cases
   String orientation;
   if (y_acceleration > threshold) {
@@ -217,7 +222,7 @@ void loop() {
   Serial.println(" m/s");
 
   mqttClient.publish(topicDirect, (orientation + ", " + rotation).c_str());
-  mqttClient.publish(topicSpeed, (String(x_velocity) + ", " + String(y_velocity)).c_str());
+  mqttClient.publish(topicSpeed, (String(x_velocity) + ", " + String(y_velocity) + " m/s").c_str());
 
   delay(500); // Delay for stability
 }
